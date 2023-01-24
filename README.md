@@ -1,5 +1,5 @@
 # outbox
-Sample Python implementation of Outbox Pattern
+Sample Python implementation of Outbox Event Pattern
 
 ![outbox design](images/outbox.png)
 
