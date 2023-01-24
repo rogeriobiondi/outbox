@@ -34,7 +34,7 @@ make install
 poetry init
 ```
 
-Start Dabase and LocalStack
+Start Database and LocalStack (AWS Mockup Services)
 
 ```
 make infra-start
@@ -63,7 +63,9 @@ make populate
 
 Login to adminer:
 
+```
 http://localhost:8080
 user: `postgres`
 database: `postgres`
 password: `example`
+```
