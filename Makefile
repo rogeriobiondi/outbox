@@ -27,11 +27,11 @@ clear:
 
 infra-start:
 	@docker-compose up -d
-	@awslocal sqs create-queue --queue-name packtrack-events
-
-database-create:
+	
+infra-create:
 	@alembic revision --autogenerate -m "First commit"
 	@alembic upgrade heads
+	@awslocal sqs create-queue --queue-name packtrack-events
 
 infra-stop:
 	@docker-compose down

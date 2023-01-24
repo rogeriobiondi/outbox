@@ -11,29 +11,8 @@ Sample Python implementation of Outbox Pattern
 - AWS cli
 
 
+
 ## Set-up
-
-```
-# Take a look at Makefile before running
-make install
-```
-
-## Starting Dabase and LocalStack
-
-```
-docker-compose up -d
-```
-
-Login adminer:
-
-http://localhost:8080
-user: `postgres`
-database: `postgres`
-password: `example`
-
-
-## Configure SQS queue (fake queue)
-
 
 Configure aws cli for fake environment (Localstack)
 
@@ -45,21 +24,46 @@ Default region name [None]: us-east-1
 Default output format [None]: json
 ```
 
-Create the fake queue
+
+Install libraries
 
 ```
-awslocal sqs create-queue --queue-name packtrack-events
-{
-    "QueueUrl": "http://localhost:4566/000000000000/packtrack-events"
-}
-```
-
-
-## Starting
-
-```
+# Take a look at Makefile before running
 cd outbox
+make install
 poetry init
 ```
 
+Start Dabase and LocalStack
 
+```
+make infra-start
+```
+
+Create database and queue
+
+```
+make database-create
+```
+
+Start applications
+
+```
+make worker
+make receiver
+```
+
+Publish messages
+
+```
+make populate
+```
+
+# Check data
+
+Login to adminer:
+
+http://localhost:8080
+user: `postgres`
+database: `postgres`
+password: `example`
