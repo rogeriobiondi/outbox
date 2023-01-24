@@ -43,7 +43,7 @@ make infra-start
 Create database and queue
 
 ```
-make database-create
+make infra-create
 ```
 
 Start applications
@@ -64,6 +64,7 @@ make populate
 Login to adminer:
 
 ```
+database type: PostgreSQL
 http://localhost:8080
 user: `postgres`
 database: `postgres`

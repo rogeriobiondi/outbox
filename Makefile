@@ -29,7 +29,7 @@ infra-start:
 	@docker-compose up -d
 	
 infra-create:
-	@alembic revision --autogenerate -m "First commit"
+	# @alembic revision --autogenerate -m "First commit"
 	@alembic upgrade heads
 	@awslocal sqs create-queue --queue-name packtrack-events
 
