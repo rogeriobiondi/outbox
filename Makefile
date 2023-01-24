@@ -1,7 +1,6 @@
-# include .env
-# export $(shell sed 's/=.*//' .env)
-# export PYTHONPATH=$(CURDIR)/src
-
+include .env
+export $(shell sed 's/=.*//' .env)
+export PYTHONPATH=$(CURDIR)/src
 
 install:
 	@echo "creating the environment..."

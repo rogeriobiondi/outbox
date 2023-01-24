@@ -25,7 +25,7 @@ Default output format [None]: json
 ```
 
 
-Install libraries
+Create virtual environmment and install libraries
 
 ```
 # Take a look at Makefile before running
@@ -40,7 +40,7 @@ Start Database and LocalStack (AWS Mockup Services)
 make infra-start
 ```
 
-Create database and queue
+Wait the environmment to start and then create database and queue:
 
 ```
 make infra-create
