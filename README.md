@@ -17,7 +17,7 @@ Sample Python implementation of Outbox Event Pattern
 Configure aws cli for fake environment (Localstack)
 
 ```
-aws configure --profile teste
+aws configure
 AWS Access Key ID [None]: fakeAccessKeyId
 AWS Secret Access Key [None]: fakeSecretAccessKey
 Default region name [None]: us-east-1
