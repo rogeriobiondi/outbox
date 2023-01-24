@@ -1,0 +1,37 @@
+# Use postgres/example user/password credentials
+version: '3.1'
+
+services:
+
+  db:
+    image: postgres
+    restart: always
+    environment:    
+      POSTGRES_PASSWORD: example
+    ports:
+      - 5432:5432
+
+  adminer:
+    command: php -S 0.0.0.0:8080 -t /var/www/html
+    depends_on:
+      - db
+    image: adminer:4.7.7-standalone
+    ports:
+      - "8080:8080"
+
+  localstack:
+    container_name: "${LOCALSTACK_DOCKER_NAME-localstack_main}"
+    image: localstack/localstack
+    ports:
+      - "127.0.0.1:4566:4566"            # LocalStack Gateway
+      - "127.0.0.1:4510-4559:4510-4559"  # external services port range
+    environment:
+      - AWS_ACCESS_KEY_ID=fakeAccessKeyId
+      - AWS_SECRET_ACCESS_KEY=fakeSecretAccessKey
+      - DEFAULT_REGION=sa-east-1
+      - DEBUG=${DEBUG-}
+      - LAMBDA_EXECUTOR=${LAMBDA_EXECUTOR-}
+      - DOCKER_HOST=unix:///var/run/docker.sock
+    volumes:
+      - "${LOCALSTACK_VOLUME_DIR:-./volume}:/var/lib/localstack"
+      - "/var/run/docker.sock:/var/run/docker.sock"
